@@ -1,0 +1,10 @@
+table, th, td {
+  border: 1px solid black;
+}
+
+header {
+  height: 4rem;
+  background-color: #BC4062;
+  color: white;
+}
+/* above for testing purposes
