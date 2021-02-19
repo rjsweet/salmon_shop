@@ -77,6 +77,10 @@ function tableTimeHeader(){
     dailyLocationTotals.textContent = 'Daily Location Total';
     row1.appendChild(dailyLocationTotals);
 }
+// make us a button here.
+const button = document.getElementById('new-store-form');
+button.addEventListener('submit', submitHandler);
+
 // bottom row of table where we put the numbers together to get the total
 function tableFooterTotals(){
     const tableElem = document.getElementById('table');
@@ -104,6 +108,20 @@ function tableFooterTotals(){
     row3.appendChild(globalTotalCell);
 }
 
+function submitHandler (event){
+    event.preventDefault();
+    let inputStand = new CookieStand (event.target.storeName.value,
+        event.target.minCustomers.value,
+        event.target.maxCustomers.value,
+        event.target.avgCookies.value)
+        inputStand.generateCustomersPerHour();
+        inputStand.calcCookiesEachHour();
+        inputStand.render();
+        oldFooter =  document.getElementById("row3");
+        oldFooter.remove();
+        tableFooterTotals();
+        console.log(inputStand);
+}
 CookieStand.prototype.render = function(){
     const article = document.createElement('article');
     const profileContainer = document.getElementById(this.id);
