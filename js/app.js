@@ -117,32 +117,51 @@ function submitHandler (event){
         inputStand.generateCustomersPerHour();
         inputStand.calcCookiesEachHour();
         inputStand.render();
-        oldFooter =  document.getElementById("row3");
+        oldFooter = document.getElementById("row3");
         oldFooter.remove();
         tableFooterTotals();
         console.log(inputStand);
 }
+// CookieStand.prototype.render = function(){
+//     const article = document.createElement('article');
+//     const profileContainer = document.getElementById(this.id);
+//     profileContainer.appendChild(article);
+
+//     const pElem = document.createElement('p');
+//     article.appendChild (pElem);
+
+//     const tableElem = document.getElementById('table');
+
+//     const row2 = document.createElement('tr');
+//     tableElem.appendChild(row2);
+
+//     const locationsCell = document.createElement('td');
+//     locationsCell.textContent = this.id;
+//     row2.appendChild(locationsCell);
+
+//     for (let i = 0; i < timeSlots.length; i++){
+//     const cookiesPerHourTableElem = document.createElement('td');
+//     row2.appendChild(cookiesPerHourTableElem);
+//     cookiesPerHourTableElem.textContent = this.cookiesPerHourArray[i][1];
+//     }
+
+//     const dailyTotalRow = document.createElement('td');
+//     row2.appendChild(dailyTotalRow);
+//     dailyTotalRow.textContent = this.totalCookies;
+
+// }
+
 CookieStand.prototype.render = function(){
-    const article = document.createElement('article');
-    const profileContainer = document.getElementById(this.id);
-    profileContainer.appendChild(article);
-
-    const pElem = document.createElement('p');
-    article.appendChild (pElem);
-
     const tableElem = document.getElementById('table');
-
     const row2 = document.createElement('tr');
     tableElem.appendChild(row2);
-
     const locationsCell = document.createElement('td');
-    locationsCell.textContent = this.id;
+    locationsCell.textContent = this.location;
     row2.appendChild(locationsCell);
-
     for (let i = 0; i < timeSlots.length; i++){
-    const cookiesPerHourTableElem = document.createElement('td');
-    row2.appendChild(cookiesPerHourTableElem);
-    cookiesPerHourTableElem.textContent = this.cookiesPerHourArray[i][1];
+        const cookiesPerHourTableElem = document.createElement('td');
+        row2.appendChild(cookiesPerHourTableElem);
+        cookiesPerHourTableElem.textContent = this.cookiesPerHourArray[i][1];
     }
 
     const dailyTotalRow = document.createElement('td');
@@ -150,6 +169,7 @@ CookieStand.prototype.render = function(){
     dailyTotalRow.textContent = this.totalCookies;
 
 }
+
 
 tableTimeHeader();
 
